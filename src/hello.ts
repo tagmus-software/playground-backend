@@ -8,7 +8,7 @@ app.use(cors({
   origin: ['*']
 }));
 
-
+ //hello
 app.get('/', (req, res) => {
   res.send('<h2> Hello word, kevin</h2>');
 });
