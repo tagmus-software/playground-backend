@@ -4,9 +4,9 @@
    "description": "",
    "main": "index.js",
    "scripts": {
-      "dev": "ts-node-dev ./src/services/servers.ts",
+      "dev": "ts-node-dev ./src/services/server.ts",
       "start": "ts-node ./src/index.ts",
-      "typeorm": "typeorm-ts-node-commonjs ./src/index.ts"
+      "typeorm": "typeorm-ts-node-commonjs ./src/.ts"
    },
    "repository": {
       "type": "git",
