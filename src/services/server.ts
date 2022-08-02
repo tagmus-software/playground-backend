@@ -3,7 +3,6 @@ import express from 'express';
 import cors from 'cors';
 import { appDataSource } from './data-soucer';
 
-
 appDataSource.initialize().then(() => {
 
 const app = express();

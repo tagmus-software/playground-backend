@@ -5,7 +5,6 @@
    "main": "index.js",
    "scripts": {
       "dev": "ts-node-dev ./src/services/server.ts",
-      "start": "ts-node ./src/index.ts",
       "typeorm": "typeorm-ts-node-commonjs ./src/.ts"
    },
    "repository": {
