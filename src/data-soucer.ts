@@ -1,21 +1,26 @@
-import { DataSource } from "typeorm";
-import 'reflect-metadata'
-import 'dotenv'
+import "reflect-metadata"
+import * as dotenv from "dotenv";
+dotenv.config();
+import { DataSource, DataSourceOptions } from "typeorm"
+import { User } from "./entity/User";
+import { SeederOptions } from "typeorm-extension";
+
+
 
 const port = process.env.DB_PORT as number | undefined
-
-export const appDataSource = new DataSource ({
- type: "mysql",
- host:process.env.DB_HOST,
- port:3306,
- username:process.env.DB_USER,
- password:process.env.DB_PASS,
- database:process.env.DB_NAME,
-
  
- entities: [`${__dirname}/**/entities/*.{ts,js}`],
- synchronize: true,
- logging: false,
- 
+const options: DataSourceOptions & SeederOptions= {
+  type: "mysql",
+    host: "localhost",
+    port:port,
+    username: 'reinaldo',
+    password: 'cafecodar',
+    database: 'playgound',
+   entities:[User],
+    logging: true,
+    synchronize:true,
+    seeds:[]
+  
 
-});
+}
+export const AppDataSource = new DataSource(options);
