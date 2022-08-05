@@ -1,7 +1,9 @@
 import 'reflect-metadata'
+import 'dotenv'
 import express from 'express';
 import cors from 'cors';
 import { appDataSource } from './data-soucer';
+
 
 appDataSource.initialize().then(() => {
 
