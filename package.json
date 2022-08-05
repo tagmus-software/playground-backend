@@ -2,11 +2,11 @@
    "name": "playground-backend",
    "version": "1.0.0",
    "description": "",
-   "main": "index.ts",
+   "main": "serv.ts",
    "scripts": {
       "dev": "ts-node-dev ./src/server.ts",
-      "typeorm": "typeorm-ts-node-commonjs",
-      "start": "ts-node src/index.ts"
+      "typeorm": "typeorm-ts-node-commonjs ./src/data-soucer.ts",
+      "start": "ts-node ./src/data-soucer.ts"
    },
    "repository": {
       "type": "git",
@@ -20,8 +20,10 @@
    },
    "homepage": "https://github.com/tagmus-software/playground-backend#readme",
    "devDependencies": {
+      "@types/bcrypt": "^5.0.0",
       "@types/cors": "^2.8.12",
       "@types/express": "^4.17.13",
+      "@types/jsonwebtoken": "^8.5.8",
       "@types/mysql": "^2.15.21",
       "@types/node": "^16.11.10",
       "eslint": "^8.20.0",
@@ -30,9 +32,15 @@
       "typescript": "4.5.2"
    },
    "dependencies": {
+      "aws-jwt-verify": "^3.1.0",
+      "bcrypt": "^5.0.1",
       "cors": "^2.8.5",
       "dotenv": "^16.0.1",
+      "dotenv-safe": "^8.2.0",
       "express": "^4.18.1",
+      "express-async-errors": "^3.1.1",
+      "jsonwebtoken": "^8.5.1",
+      "jwt-verify": "0.0.2",
       "mysql2": "^2.3.3",
       "reflect-metadata": "^0.1.13",
       "typeorm": "0.3.7",

@@ -1,7 +1,8 @@
 import 'reflect-metadata'
 import express from 'express';
 import cors from 'cors'
-import { AppDataSource } from './data-soucer'
+import { AppDataSource } from './models/data-soucer'
+import router from './routes';
 
 
 
@@ -9,6 +10,8 @@ import { AppDataSource } from './data-soucer'
 AppDataSource.initialize().then(() => {
   
 const app = express();
+
+app.use(router)
  
 app.use(express.json())
 
