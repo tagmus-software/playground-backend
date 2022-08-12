@@ -1,5 +1,7 @@
 
 import { Request, Response } from "express";
+import { Any } from "typeorm";
+import { UserRepository } from "../repositories/user.repository";
 import { RegisterService } from "../service/register.service";
 
 
@@ -11,7 +13,8 @@ export class RegisterController {
         this.service = new RegisterService();
     }
 
-    public registra(req: Request, res: Response) {
+    async registra(req: Request, res: Response) {
+
         // validar parametros logo abaixo: 
         // começo
         const body = {
@@ -22,12 +25,15 @@ export class RegisterController {
 
         }
 
+
+
         // fim
 
         // chamar registrar usuario
-        // this.service.registrarUsuario({})
+        console.log('conseguir passar no controller')
+        this.service.registrarUsuario({ body })
 
-        res.json("oi")
+
 
 
 
