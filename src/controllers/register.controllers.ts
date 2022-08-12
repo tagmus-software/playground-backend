@@ -14,6 +14,13 @@ export class RegisterController {
     public registra(req: Request, res: Response) {
         // validar parametros logo abaixo: 
         // começo
+        const body = {
+            name: 'Reinaldo',
+            email: 'covalick113@gmail.com',
+            password: 'covalick123',
+            password_confirma: 'covalick123',
+
+        }
 
         // fim
 

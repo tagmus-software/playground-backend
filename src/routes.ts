@@ -7,7 +7,7 @@ const router = Router()
 const registerController = new RegisterController()
 
 router.get('/register', async (req: Request, res: Response) => {
-    await registerController.registrar(req, res)
+    await registerController.registra(req, res)
 })
 
 
