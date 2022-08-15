@@ -1,7 +1,6 @@
 
 import { Request, Response } from "express";
-import { Any } from "typeorm";
-import { UserRepository } from "../repositories/user.repository";
+import { User } from "../models/user.model";
 import { RegisterService } from "../service/register.service";
 
 
@@ -13,25 +12,50 @@ export class RegisterController {
         this.service = new RegisterService();
     }
 
-    async registra(req: Request, res: Response) {
+    public async registra(req: Request, res: Response) {
 
         // validar parametros logo abaixo: 
         // começo
-        const body = {
-            name: 'Reinaldo',
-            email: 'covalick113@gmail.com',
-            password: 'covalick123',
-            password_confirma: 'covalick123',
+        const { name, email, password, password_confimation } = req.body;
 
+        const usuario = await User.findOne({ name: name });
+
+        if (!usuario) {
+            return res.status(400).send({ message: 'Usuário já existe !' })
         }
+
+
+        const emailvalidacao = await User.findOne({ email: email });
+
+        if (!emailvalidacao) {
+            return res.status(400).send({ message: 'E-email ja existe!' })
+        }
+
+
+        const passwordValidacao = await User.findOne({ password: password });
+
+        if (!passwordValidacao) {
+            return res.status(400).send({ message: 'senha já existe!' })
+        }
+
+
+        const password_confima = await User.findOne({ password_confimation: password_confimation });
+
+        if (!password_confima) {
+            return res.status(400).send({ message: ' !' })
+        }
+
+
+
+
 
 
 
         // fim
 
         // chamar registrar usuario
-        console.log('conseguir passar no controller')
-        this.service.registrarUsuario({ body })
+        // console.log('conseguir passar no controller')
+        // this.service.registrarUsuario({ body })
 
 
 
