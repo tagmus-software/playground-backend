@@ -18,16 +18,13 @@ export class RegisterController {
 
         // validar parametros logo abaixo: 
         // começo
-        const { name, email, password, password_confirma } = req.body;
+        const { name, password, password_confirma } = req.body;
 
 
         if (!name) {
             return res.status(422).json({ msg: 'Nome obrigatorio!' })
         }
-        if (email) {
-            return res.status(400).json({ msg: 'E-email ja existe!' })
 
-        }
         if (!password) {
             return res.status(400).json({ msg: 'senha obrigatória!' })
         }
@@ -36,16 +33,7 @@ export class RegisterController {
             return res.status(400).json({ msg: 'A senhas nao confere!!' })
 
 
-        } let userExist = await User.find0ne({ email: email })
-
-        if (userExist === null) {
-            return res.status(400).json({ msg: 'E-email Já Existe' })
-
         }
-
-
-
-
 
 
 
