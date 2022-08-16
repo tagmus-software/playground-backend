@@ -1,6 +1,7 @@
 
 import { Request, Response } from "express";
 import { UserRepository } from "../repositories/user.repository";
+import bcrypt from "bcrypt"
 
 
 export class RegisterService {
@@ -11,8 +12,10 @@ export class RegisterService {
 
     }
 
-    public registrarUsuario(dados: any) {
+    public async registrarUsuario(dados: any) {
+
         // chamar metodo salvarUsuario que está no repositorio logo abaixo.
+
         this.repository.salvarUsuario(null)
 
 
