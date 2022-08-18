@@ -24,7 +24,6 @@ export class UserRepository {
         const usuario = dataSourceRepository.save(dadosUsuario)
 
 
-
         return usuario
     }
 

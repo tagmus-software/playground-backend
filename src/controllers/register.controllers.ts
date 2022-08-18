@@ -2,10 +2,6 @@
 import { Request, Response } from "express";
 import { RegisterService } from "../service/register.service";
 
-
-
-
-
 export class RegisterController {
     private service: RegisterService
 
@@ -55,11 +51,11 @@ export class RegisterController {
         const usuario = await this.service.registrarUsuario({ password, email, name })
 
         if (!usuario) {
+
             const msgJson = { msg: 'usuario Já Cadastrado com esse E-email!' }
             return res.status(403).json(msgJson)
         }
 
-        console.log(usuario)
 
 
         res.status(200).json(usuario)

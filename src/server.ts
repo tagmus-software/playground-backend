@@ -18,7 +18,6 @@ appDataSource.initialize().then(() => {
         origin: ['*']
     }));
 
-    //hello
     app.get('/', (req: Request, res: Response) => {
         return res.json('Hello kevin');
     });
