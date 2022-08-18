@@ -2,9 +2,8 @@
 
 import { UserRepository } from "../repositories/user.repository";
 import bcrypt from "bcrypt"
-import { Jwt } from "jsonwebtoken";
+
 export class RegisterService {
-    [x: string]: any;
     private repository: UserRepository
     constructor() {
 
