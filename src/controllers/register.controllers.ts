@@ -1,9 +1,7 @@
 
 import { Request, Response } from "express";
 import { RegisterService } from "../service/register.service";
-import * as bcrypt from "bcrypt"
-import { User } from "../models/user.model";
-import { appDataSource } from "../data-soucer";
+
 
 
 
@@ -19,14 +17,11 @@ export class RegisterController {
     public async registra(req: Request, res: Response) {
 
 
-
-        // validar parametros logo abaixo: 
-        // começo
-        const { name, email, password, password_confirma } = req.body;
+        const { name, email, password, password_confirma, } = req.body;
 
 
         if (!name) {
-            return res.status(422).json({ msg: 'Nome obrigatorio!' })
+            return res.status(400).json({ msg: 'Nome obrigatorio!' })
         }
 
         if (!email) {
@@ -34,19 +29,20 @@ export class RegisterController {
 
         }
 
-        const user = await appDataSource.getRepository(User).findOneBy({ email })
-
-        if (user) {
-
-            return res.status(400).json({ msg: 'E-email ja existe' })
-
-        }
-
-
         if (!password) {
             return res.status(400).json({ msg: 'senha obrigatória!' })
 
+
         }
+
+        if (/^(?=.*[A-Z])(?=.*[!#@$%&])(?=.*[0-9])(?=.*[a-z]).{7,15}$/.test(password) == false) {
+
+            return res.status(400).json({
+                msg: 'A senha Deve conter mais que 7 caracteres, um numero, uma letra maiuscula e um simbolo'
+            })
+
+        }
+
 
         if (password !== password_confirma) {
             return res.status(400).json({ msg: 'A senhas nao confere!!' })
@@ -55,9 +51,18 @@ export class RegisterController {
         }
 
 
-        //this.service.registrarUsuario({ })
+
+        const usuario = await this.service.registrarUsuario({ password, email, name })
+
+        if (!usuario) {
+            const msgJson = { msg: 'usuario Já Cadastrado com esse E-email!' }
+            return res.status(403).json(msgJson)
+        }
+
+        console.log(usuario)
 
 
+        res.status(200).json(usuario)
 
 
 
