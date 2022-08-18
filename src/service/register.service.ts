@@ -1,11 +1,8 @@
 
-import { Request, Response } from "express";
+
 import { UserRepository } from "../repositories/user.repository";
 import bcrypt from "bcrypt"
-import { User } from "../models/user.model";
-import { json } from "stream/consumers";
-
-
+import { Jwt } from "jsonwebtoken";
 export class RegisterService {
     [x: string]: any;
     private repository: UserRepository
@@ -27,12 +24,13 @@ export class RegisterService {
 
         const passwordHash = bcrypt.hashSync(password, salt)
 
+
         // chamar metodo salvarUsuario que está no repositorio logo abaixo.
 
         //this.repository.salvarUsuario(null)
 
 
-        const usuario = await this.repository.salvarUsuario({ password, email, name })
+        const usuario = await this.repository.salvarUsuario({ password: passwordHash, email, name })
 
 
         return { usuario }
