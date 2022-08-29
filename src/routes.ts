@@ -1,6 +1,6 @@
 import { request, Request, response, Response, Router } from "express";
 import { RegisterController, } from "./controllers/register.controllers";
-import { LoginController } from "./controllers/loginControllers";
+import { LoginController } from "./controllers/login.controllers";
 
 
 
@@ -19,7 +19,7 @@ const loginController = new LoginController()
 
 router.post('/login', async (req: Request, res: Response) => {
 
-    await loginController.efetuar(req, res)
+    await loginController.authenticate(req, res)
 })
 
 

@@ -1,7 +1,7 @@
 
 import { Request, Response } from "express";
 import { sign } from "jsonwebtoken";
-import { LoginService } from "../service/loginService";
+import { LoginService } from "../service/login.service";
 
 export class LoginController {
     private service: LoginService
@@ -11,7 +11,7 @@ export class LoginController {
         this.service = new LoginService();
     }
 
-    public async efetuar(req: Request, res: Response) {
+    public async authenticate(req: Request, res: Response) {
 
 
         const { email, password, } = req.body;
@@ -34,7 +34,7 @@ export class LoginController {
         const usuario = await this.service.efetuarLogin({ email, password })
         if (!usuario) {
 
-
+            return null
 
         }
 
