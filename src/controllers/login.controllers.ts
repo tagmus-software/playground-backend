@@ -31,19 +31,12 @@ export class LoginController {
 
 
 
-        const usuario = await this.service.efetuarLogin({ email, password })
-        if (!usuario) {
-
-            return null
-
-        }
 
 
 
 
 
 
-        res.status(200).json(usuario,)
     }
 
 
