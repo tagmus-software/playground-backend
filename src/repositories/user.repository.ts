@@ -26,5 +26,11 @@ export class UserRepository {
 
         return usuario
     }
+    public loginUsuario({ email, password, }: any) {
+        const dadosUsuario = dataSourceRepository.findOneBy({ email, password })
 
+
+
+        return dadosUsuario
+    }
 }

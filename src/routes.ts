@@ -1,6 +1,7 @@
 import { request, Request, response, Response, Router } from "express";
 import { RegisterController, } from "./controllers/register.controllers";
-const jwt = require('jsonwebtoken')
+import { LoginController } from "./controllers/loginControllers";
+
 
 
 const router = Router()
@@ -13,16 +14,14 @@ router.post('/register', async (req: Request, res: Response) => {
 })
 
 
-router.get('/login', async (req: Request, res: Response) => {
 
-    res.json([{ id: 1, email: 'covalick113@gmail.com', password: 'covalick123' }]);
-    if (req.body.email === 'Covalick113@gmail.com' && req.body.password === 'covalick123') {
+const loginController = new LoginController()
 
-        await registerController.registra(req, res)
-    }
+router.post('/login', async (req: Request, res: Response) => {
 
-
+    await loginController.efetuar(req, res)
 })
+
 
 
 
