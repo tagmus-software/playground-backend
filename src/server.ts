@@ -21,7 +21,9 @@ appDataSource.initialize().then(() => {
     app.get('/', (req: Request, res: Response) => {
         return res.json('Hello kevin');
     });
-    return app.listen(process.env.PORT)
+    return app.listen(process.env.PORT, () => {
+        console.log('servidor rodando', process.env.PORT)
+    })
 
 });
 
