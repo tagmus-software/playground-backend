@@ -14,6 +14,21 @@ router.post('/register', async (req: Request, res: Response) => {
     await registerController.registra(req, res)
 })
 
+const logincontroller = new LoginController()
+
+router.post('/login', async (req: Request, res: Response) => {
+
+    await logincontroller.authenticate(req, res)
+})
+
+router.post('/auth', AuthMiddleware, (req, res) => {
+    res.json({ hello: 'world' })
+});
+
+
+
+
+
 const loginController = new LoginController()
 
 router.post('/login', async (req: Request, res: Response) => {
@@ -21,9 +36,7 @@ router.post('/login', async (req: Request, res: Response) => {
     await loginController.authenticate(req, res)
 })
 
-router.post('/auth', AuthMiddleware, (req, res) => {
-    res.json({ hello: 'world' })
-});
+
 
 
 
