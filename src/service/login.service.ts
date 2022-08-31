@@ -5,10 +5,6 @@ import bcrypt from "bcrypt"
 import { sign } from "jsonwebtoken";
 
 
-
-
-
-
 export class LoginService {
     private repository: UserRepository
     constructor() {
@@ -42,7 +38,7 @@ export class LoginService {
 
 
 
-        return ({ token })
+        return ({ token, })
     }
 }
 
