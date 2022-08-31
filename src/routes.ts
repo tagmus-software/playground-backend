@@ -1,6 +1,7 @@
 import { request, Request, response, Response, Router } from "express";
-import { RegisterController, } from "./controllers/register.controllers";
 import { LoginController } from "./controllers/login.controllers";
+import { RegisterController, } from "./controllers/register.controllers";
+import { AuthMiddleware } from "./middleware/auth";
 
 
 
@@ -12,6 +13,19 @@ router.post('/register', async (req: Request, res: Response) => {
 
     await registerController.registra(req, res)
 })
+
+const logincontroller = new LoginController()
+
+router.post('/login', async (req: Request, res: Response) => {
+
+    await logincontroller.authenticate(req, res)
+})
+
+router.post('/auth', AuthMiddleware, (req, res) => {
+    res.json({ hello: 'world' })
+});
+
+
 
 
 

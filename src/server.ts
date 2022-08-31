@@ -22,7 +22,10 @@ appDataSource.initialize().then(() => {
         return res.json('Hello kevin');
     });
 
-    return app.listen(process.env.PORT)
+    return app.listen(process.env.PORT, () => {
+        console.log('servidor rodando', process.env.PORT)
+    })
+
 
 });
 

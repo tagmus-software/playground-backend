@@ -31,6 +31,10 @@ export class LoginController {
 
 
 
+        const usuario = await this.service.efetuarLogin({ email, password })
+
+
+        res.status(200).json(usuario)
 
 
 
