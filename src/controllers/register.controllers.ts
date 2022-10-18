@@ -38,15 +38,10 @@ export class RegisterController {
             })
 
         }
-
-
         if (password !== password_confirma) {
             return res.status(400).json({ msg: 'A senhas nao confere!!' })
 
-
         }
-
-
 
         const usuario = await this.service.registrarUsuario({ password, email, name })
 
@@ -55,8 +50,6 @@ export class RegisterController {
             const msgJson = { msg: 'usuario Já Cadastrado com esse E-email!' }
             return res.status(403).json(msgJson)
         }
-
-
 
         res.status(200).json(usuario)
 

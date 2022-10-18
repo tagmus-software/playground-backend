@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { Jwt } from "jsonwebtoken";
+
 import { verify } from "jsonwebtoken";
 
 
@@ -32,5 +32,7 @@ export function AuthMiddleware(
 
         return res.status(401).json({ Error: " token invalid" })
     }
+
+
 
 }
