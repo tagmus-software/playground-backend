@@ -19,14 +19,9 @@ export class UserService {
 
         if (!user) {
 
-            return ({ msg: "usuario não encontrado " })
+            throw new Error("Usuario Não existe");
 
         }
-
-        // const salt = bcrypt.genSaltSync(10)
-
-        // const idHash = bcrypt.hashSync(id, salt)
-
 
 
         await this.repository.atualizarUsuario({ id, name })

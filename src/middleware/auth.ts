@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response } from "express";
-
 import { verify } from "jsonwebtoken";
 
 
@@ -23,9 +22,11 @@ export function AuthMiddleware(
 
     const [, token] = authorization.split(" ");
 
+
     try {
 
         const decoded = verify(token, process.env.JWT_PASS);
+
 
     } catch (error) {
 

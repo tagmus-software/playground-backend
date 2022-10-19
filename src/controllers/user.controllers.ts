@@ -26,10 +26,16 @@ export class UserController {
             })
 
         }
+        try {
 
-        const result = await this.service.editarUsuario({ name, id })
+            await this.service.editarUsuario({ id })
 
-        res.status(200).json(result)
+
+        } catch (error) {
+
+            return res.status(404).json({ msg: error.message })
+        }
+
 
     }
 
@@ -47,21 +53,23 @@ export class UserController {
 
         if (isNaN(id as any)) {
 
-            res.status(400).json({ msg: 'so numeros e obrigatorio' })
+            res.status(400).json({ msg: 'Id deve ser do tipo number"' })
         }
 
 
         try {
 
-            this.service.deletarUsuarioPorId(id);
+            await this.service.deletarUsuarioPorId({ id })
+
+
         } catch (error) {
 
             return res.status(404).json({ error })
         }
 
-        const resultado = await this.service.deletarUsuarioPorId({ id })
 
-        res.status(200).json(resultado)
+
+
 
     }
 }
