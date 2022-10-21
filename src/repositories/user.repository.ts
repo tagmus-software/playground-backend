@@ -28,14 +28,16 @@ export class UserRepository {
 
     public async buscarUsuarioporId(id: number) {
 
-        const usuario = await dataSourceRepository.findOneBy({
+        const usuario = await dataSourceRepository.findBy({
 
             id: id,
+
 
         })
 
         return { usuario }
     }
+
 
     public salvarUsuario({ name, email, password, }: any) {
         const dadosUsuario = dataSourceRepository.create({ name, email, password })

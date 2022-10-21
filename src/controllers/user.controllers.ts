@@ -31,7 +31,7 @@ export class UserController {
 
             await this.service.editarUsuario({ id, name })
 
-            return res.status(404).json({ msg: " usuario editado com sucesso " })
+            return res.status(200).json({ msg: " usuario atualizado com sucesso " })
 
 
         } catch (error) {
@@ -65,7 +65,7 @@ export class UserController {
 
             await this.service.deletarUsuarioPorId({ id })
 
-            return res.status(404).json({ msg: " usuario deletado com sucesso " })
+            return res.status(200).json({ msg: " usuario deletado com sucesso " })
 
 
         } catch (error) {
