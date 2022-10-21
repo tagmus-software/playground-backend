@@ -28,12 +28,19 @@ export class UserRepository {
 
     public async buscarUsuarioporId(id: number) {
 
-        const usuario = await dataSourceRepository.findBy({
+        const usuario = await dataSourceRepository.findOneBy({
 
-            id: id,
+            id: id
 
 
         })
+
+
+        if (!usuario) {
+
+            throw new Error("Usuario Não existe");
+
+        }
 
         return { usuario }
     }

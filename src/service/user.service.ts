@@ -10,7 +10,7 @@ export class UserService {
 
     public async editarUsuario({ id, name }: any) {
 
-        const user = await this.repository.buscarUsuarioporId(id,)
+        const user = await this.repository.buscarUsuarioporId(id)
 
         if (!user) {
 
