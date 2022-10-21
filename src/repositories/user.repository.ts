@@ -35,14 +35,8 @@ export class UserRepository {
 
         })
 
+        return usuario
 
-        if (!usuario) {
-
-            throw new Error("Usuario Não existe");
-
-        }
-
-        return { usuario }
     }
 
 

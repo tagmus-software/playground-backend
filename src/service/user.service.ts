@@ -19,9 +19,9 @@ export class UserService {
         }
 
 
-        await this.repository.atualizarUsuario({ id, name })
+        await this.repository.atualizarUsuario({ id, name, })
 
-
+        return user
     }
 
     public async deletarUsuarioPorId({ id }: any) {
@@ -36,7 +36,9 @@ export class UserService {
 
         }
 
-        await this.repository.deletarUsuario({ id })
+        await this.repository.deletarUsuario({ id, })
+
+        return user
 
     }
 
