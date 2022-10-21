@@ -36,8 +36,6 @@ export class UserController {
 
         } catch (error) {
 
-            console.log(error)
-
 
             return res.status(404).json({ msg: error.message })
         }

@@ -32,12 +32,10 @@ export class UserRepository {
 
             id: id,
 
-
         })
 
         return { usuario }
     }
-
 
     public salvarUsuario({ name, email, password, }: any) {
         const dadosUsuario = dataSourceRepository.create({ name, email, password })

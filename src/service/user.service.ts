@@ -1,8 +1,4 @@
 import { UserRepository } from "../repositories/user.repository";
-
-
-
-
 export class UserService {
 
     private repository: UserRepository
@@ -41,7 +37,6 @@ export class UserService {
         }
 
         await this.repository.deletarUsuario({ id })
-
 
     }
 
