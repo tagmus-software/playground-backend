@@ -1,5 +1,4 @@
 import { UserRepository } from "../repositories/user.repository";
-import bcrypt from "bcrypt"
 
 
 
@@ -26,11 +25,12 @@ export class UserService {
 
         await this.repository.atualizarUsuario({ id, name })
 
+
     }
 
     public async deletarUsuarioPorId({ id }: any) {
 
-        const user = await this.repository.buscarIdDoUsuario(id)
+        const user = await this.repository.buscarUsuarioporId(id)
 
 
         if (!user) {

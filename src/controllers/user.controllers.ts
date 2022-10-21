@@ -26,12 +26,18 @@ export class UserController {
             })
 
         }
+
         try {
 
-            await this.service.editarUsuario({ id })
+            await this.service.editarUsuario({ id, name })
+
+            return res.status(404).json({ msg: " usuario editado com sucesso " })
 
 
         } catch (error) {
+
+            console.log(error)
+
 
             return res.status(404).json({ msg: error.message })
         }
@@ -61,14 +67,13 @@ export class UserController {
 
             await this.service.deletarUsuarioPorId({ id })
 
+            return res.status(404).json({ msg: " usuario deletado com sucesso " })
+
 
         } catch (error) {
 
-            return res.status(404).json({ error })
+            return res.status(404).json({ msg: error.message })
         }
-
-
-
 
 
     }

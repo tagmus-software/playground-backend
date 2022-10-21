@@ -2,7 +2,6 @@ import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
 
 
-
 export function AuthMiddleware(
     req: Request,
     res: Response,
@@ -25,8 +24,11 @@ export function AuthMiddleware(
 
     try {
 
-        const decoded = verify(token, process.env.JWT_PASS);
+        const decoded = verify(token, process.env.JWT_PASS,);
 
+
+
+        next()
 
     } catch (error) {
 

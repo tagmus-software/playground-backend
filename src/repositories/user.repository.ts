@@ -28,7 +28,7 @@ export class UserRepository {
 
     public async buscarUsuarioporId(id: number) {
 
-        const usuario = await dataSourceRepository.findBy({
+        const usuario = await dataSourceRepository.findOneBy({
 
             id: id,
 
@@ -38,17 +38,6 @@ export class UserRepository {
         return { usuario }
     }
 
-
-    public async buscarIdDoUsuario(id: number) {
-
-        const usuario = await dataSourceRepository.findBy({
-
-            id: id,
-
-        })
-
-        return { usuario }
-    }
 
     public salvarUsuario({ name, email, password, }: any) {
         const dadosUsuario = dataSourceRepository.create({ name, email, password })
