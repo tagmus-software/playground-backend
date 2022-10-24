@@ -18,9 +18,12 @@ export class UserService {
 
         }
 
-        await this.repository.atualizarUsuario({ id, name, })
+        return await this.repository.atualizarUsuario({ name, id })
 
-        return user
+
+
+
+
     }
 
     public async deletarUsuarioPorId({ id }: any) {

@@ -28,14 +28,15 @@ export class UserRepository {
 
     public async buscarUsuarioporId(id: number) {
 
-        const usuario = await dataSourceRepository.findOneBy({
+        const user = await dataSourceRepository.findOneBy({
 
             id: id
 
 
         })
 
-        return usuario
+
+        return user
 
     }
 
@@ -50,6 +51,7 @@ export class UserRepository {
     public async atualizarUsuario({ name, id }: AtualizarUsuarioParams) {
 
         const updatUser = await dataSourceRepository.update(id, { name })
+
 
         return updatUser
 
