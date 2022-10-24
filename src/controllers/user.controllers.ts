@@ -29,9 +29,10 @@ export class UserController {
 
         try {
 
-            await this.service.editarUsuario({ id, name })
+            return res.status(200).json(await this.service.editarUsuario({ id, name }))
 
-            return res.status(200).json({ msg: " usuario atualizado com sucesso " })
+
+
 
 
         } catch (error) {

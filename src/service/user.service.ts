@@ -18,7 +18,6 @@ export class UserService {
 
         }
 
-
         await this.repository.atualizarUsuario({ id, name, })
 
         return user
