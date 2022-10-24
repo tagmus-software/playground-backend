@@ -1,7 +1,7 @@
 
 import { Request, Response } from "express";
-import { sign } from "jsonwebtoken";
 import { LoginService } from "../service/login.service";
+
 
 export class LoginController {
     private service: LoginService
@@ -31,10 +31,10 @@ export class LoginController {
 
 
 
-        const usuario = await this.service.efetuarLogin({ email, password })
+        const token = await this.service.efetuarLogin({ email, password })
 
 
-        res.status(200).json(usuario)
+        res.status(200).json(token)
 
 
 

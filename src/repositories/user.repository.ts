@@ -1,9 +1,18 @@
 
-import { DataSource, Repository } from "typeorm";
+
+
+
 import { appDataSource } from "../data-soucer";
 import { User } from "../models/user.model";
 
 const dataSourceRepository = appDataSource.getRepository(User)
+type AtualizarUsuarioParams = {
+
+    name: string;
+    id: number;
+
+
+}
 
 export class UserRepository {
 
@@ -17,14 +26,43 @@ export class UserRepository {
         return usuario
     }
 
+    public async buscarUsuarioporId(id: number) {
+
+        const user = await dataSourceRepository.findOneBy({
+
+            id: id
+
+
+        })
+
+
+        return user
+
+    }
+
 
     public salvarUsuario({ name, email, password, }: any) {
         const dadosUsuario = dataSourceRepository.create({ name, email, password })
-
         const usuario = dataSourceRepository.save(dadosUsuario)
 
 
         return usuario
+    }
+    public async atualizarUsuario({ name, id }: AtualizarUsuarioParams) {
+
+        const updatUser = await dataSourceRepository.update(id, { name })
+
+
+        return updatUser
+
+    }
+
+    public async deletarUsuario({ id }: any) {
+
+        const deletUser = await dataSourceRepository.delete({ id })
+
+        return deletUser
+
     }
 
 }

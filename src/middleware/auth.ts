@@ -1,7 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { Jwt } from "jsonwebtoken";
 import { verify } from "jsonwebtoken";
-
 
 
 export function AuthMiddleware(
@@ -23,14 +21,21 @@ export function AuthMiddleware(
 
     const [, token] = authorization.split(" ");
 
+
     try {
 
-        const decoded = verify(token, process.env.JWT_PASS);
+        const decoded = verify(token, process.env.JWT_PASS,);
+
+
+
+        next()
 
     } catch (error) {
 
 
         return res.status(401).json({ Error: " token invalid" })
     }
+
+
 
 }

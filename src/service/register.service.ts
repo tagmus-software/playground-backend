@@ -23,14 +23,7 @@ export class RegisterService {
 
         const passwordHash = bcrypt.hashSync(password, salt)
 
-
-        // chamar metodo salvarUsuario que está no repositorio logo abaixo.
-
-        //this.repository.salvarUsuario(null)
-
-
         const usuario = await this.repository.salvarUsuario({ password: passwordHash, email, name })
-
 
         return { usuario }
     }
