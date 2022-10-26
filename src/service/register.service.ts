@@ -1,10 +1,12 @@
 
 
 import { UserRepository } from "../repositories/user.repository";
-import bcrypt from "bcrypt"
+import { PasswordService } from "./password.service";
+
 
 export class RegisterService {
-    private repository: UserRepository
+    private repository: UserRepository;
+    private passwordService: PasswordService;
     constructor() {
 
         this.repository = new UserRepository
@@ -19,11 +21,16 @@ export class RegisterService {
             return null
         }
 
-        const salt = bcrypt.genSaltSync(10)
 
-        const passwordHash = bcrypt.hashSync(password, salt)
 
-        const usuario = await this.repository.salvarUsuario({ password: passwordHash, email, name })
+
+        const passwordHash = this.passwordService.hashPassword(password)
+
+        const usuario = await this.repository.salvarUsuario({
+            password: passwordHash,
+            email,
+            name
+        })
 
         return { usuario }
     }

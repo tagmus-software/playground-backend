@@ -48,13 +48,14 @@ export class UserRepository {
 
         return usuario
     }
+
     public async atualizarUsuario({ name, id }: AtualizarUsuarioParams) {
-
         const updatUser = await dataSourceRepository.update(id, { name })
-
-
         return updatUser
+    }
 
+    public async atualizarSenha(id: number, password: string) {
+        return dataSourceRepository.update(id, { password })
     }
 
     public async deletarUsuario({ id }: any) {
@@ -63,6 +64,14 @@ export class UserRepository {
 
         return deletUser
 
+    }
+
+    public async editarPassword({ id, password }: any) {
+
+        const editPass = await dataSourceRepository.update(id, { password })
+
+
+        return editPass
     }
 
 }
