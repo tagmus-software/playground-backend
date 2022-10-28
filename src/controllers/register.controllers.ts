@@ -1,6 +1,7 @@
 
 import { Request, Response } from "express";
 import { RegisterService } from "../service/register.service";
+import { validatePassword } from "../validators/password";
 
 export class RegisterController {
     private service: RegisterService
@@ -25,23 +26,15 @@ export class RegisterController {
 
         }
 
-        if (!password) {
-            return res.status(400).json({ msg: 'senha obrigatória!' })
+        try {
 
+            validatePassword(password, password_confirma)
 
+        } catch (error) {
+
+            return res.status(400).json({ msg: error.message })
         }
 
-        if (/^(?=.*[A-Z])(?=.*[!#@$%&])(?=.*[0-9])(?=.*[a-z]).{7,15}$/.test(password) == false) {
-
-            return res.status(400).json({
-                msg: 'A senha Deve conter mais que 7 caracteres, um numero, uma letra maiuscula e um simbolo'
-            })
-
-        }
-        if (password !== password_confirma) {
-            return res.status(400).json({ msg: 'A senhas nao confere!!' })
-
-        }
 
         const usuario = await this.service.registrarUsuario({ password, email, name })
 

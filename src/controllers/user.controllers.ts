@@ -29,13 +29,7 @@ export class UserController {
 
         try {
 
-
-
             return res.status(200).json(await this.service.editarUsuario({ id, name }))
-
-
-
-
 
         } catch (error) {
 

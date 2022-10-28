@@ -44,4 +44,8 @@ export class UserService {
 
     }
 
+    public encontrarUsuarioPorId(id: number) {
+        return this.repository.buscarUsuarioporId(id)
+    }
+
 }

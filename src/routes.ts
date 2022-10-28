@@ -1,8 +1,10 @@
 
 import { request, Request, response, Response, Router } from "express";
 import { LoginController } from "./controllers/login.controllers";
+import { PasswordController } from "./controllers/password.controller";
 import { RegisterController, } from "./controllers/register.controllers";
 import { UserController } from "./controllers/user.controllers";
+import { RequestApp } from "./interface/request";
 import { AuthMiddleware } from "./middleware/auth";
 
 
@@ -39,6 +41,13 @@ router.delete('/users/:id', AuthMiddleware, async (req: Request, res: Response) 
 
     await usercontroller.deletar(req, res);
 
+})
+
+const passwordcontroller = new PasswordController()
+
+router.put('/password', AuthMiddleware, async (req: RequestApp, res: Response) => {
+
+    await passwordcontroller.editarPass(req, res);
 })
 
 export default router
